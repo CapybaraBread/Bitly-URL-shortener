@@ -4,10 +4,6 @@ from urllib.parse import urlsplit
 import os
 import argparse
 from dotenv import load_dotenv
-load_dotenv()
-parser = argparse.ArgumentParser(description='Программа кторая сокращает ссылки, либо выводит данные этих ссылок')
-parser.add_argument('short_link', type=str, help='Введите либо короткую ссылку, либо длинную')
-args = parser.parse_args()
 
 def get_short_link(token, version, url, is_private):
     params_short_link = {
@@ -55,6 +51,10 @@ def check_link(token, version, key, extended, interval):
 
 
 if __name__ == "__main__":
+    load_dotenv()
+    parser = argparse.ArgumentParser(description='Программа кторая сокращает ссылки, либо выводит данные этих ссылок')
+    parser.add_argument('short_link', type=str, help='Введите либо короткую ссылку, либо длинную')
+    args = parser.parse_args()
     short_link = args.short_link
     token = os.getenv("TELEGRAM_TOKEN")
     version = 5.199
