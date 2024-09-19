@@ -43,10 +43,9 @@ def check_link(token, version, key, extended, interval):
         'extended':extended,
         'v':version,
     }
-    is_short_link = False
+
     response = requests.get(method, params = params)
-    if 'error' not in response.text: 
-        is_short_link = True
+    is_short_link = 'error' not in response.text
     return is_short_link
 
 
