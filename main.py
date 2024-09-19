@@ -55,15 +55,15 @@ if __name__ == "__main__":
     parser.add_argument('short_link', type=str, help='Введите либо короткую ссылку, либо длинную')
     args = parser.parse_args()
     short_link = args.short_link
-    token = os.getenv("TELEGRAM_TOKEN")
+    telegram_token= os.getenv("TELEGRAM_TOKEN")
     version = 5.199
     is_private = 0
     extended = True
     interval = 'forever'
     key = urlsplit(short_link).path[1:]
-    is_short_link = check_link(token, version, key, extended, interval)
+    is_short_link = check_link(telegram_token, version, key, extended, interval)
     if is_short_link:
-        print(count_clicks(token, version, key, extended, interval))
+        print(count_clicks(telegram_token, version, key, extended, interval))
     else:
-        print(get_short_link(token, version, short_link, is_private))
+        print(get_short_link(telegram_token, version, short_link, is_private))
    
